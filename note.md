@@ -1,7 +1,5 @@
 # Vue
 
-
-
 ## CDN
 
 ```javascript
