@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建挂载点 -->
+    <div id="app">
+        <p>{{msg}}</p>
+
+        <!-- v-if -->
+        <h2 v-if="isShow">v-if 控制元素显示/隐藏</h2>
+        <!-- v-show -->
+        <h2 v-show="isShow">v-show 控制显示/隐藏</h2>
+
+    </div>
+
+    <script>
+        // 3.创建Vue实例
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '123',
+                isShow: false
+            }
+        })
+    </script>
+</body>
+
+</html>
