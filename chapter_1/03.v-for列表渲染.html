@@ -8,7 +8,11 @@
     <title>Document</title>
     <!-- 1.引入Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,6 +33,35 @@
         <ul>
             <li v-for="(item,index) in books" :key="index">{{item.id}}-{{item.name}}-{{item.price}}</li>
         </ul>
+
+        <!-- 嵌套渲染 -->
+        <h2>嵌套渲染</h2>
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                {{item.name}}
+                <ol>
+                    <li v-for="m in item.music" :key="m.musicId">
+                        {{m.musicName}}
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <!-- 补充 -->
+        <span>{{number+1}}</span>
+        <span>{{ok?'yse':'no'}}</span>
+        <span>{{msg.split('').reverse().join('')}}</span>
+
+
+        <!-- v-cloak 资源加载完成之前,调用设置的样式-->
+        <div v-cloak>
+            {{number}}
+        </div>
+
+        <!-- v-once 只会渲染一次-->
+        <div v-once>
+            {{number}}
+        </div>
     </div>
 
     <script>
@@ -36,6 +69,9 @@
         new Vue({
             el: '#app',
             data: {
+                ok: true,
+                number: 10,
+                msg: '今天下雨了',
                 arr: [2, 3, 4, 5],
                 stu: {
                     name: '张三',
@@ -55,6 +91,36 @@
                         id: 3,
                         name: 'js',
                         price: '65'
+                    }
+                ],
+                list: [
+                    {
+                        id: 1,
+                        name: '周杰伦',
+                        music: [
+                            {
+                                musicId: 1,
+                                musicName: '龙卷风'
+                            },
+                            {
+                                musicId: 2,
+                                musicName: '双截棍'
+                            }
+                        ]
+
+
+                    }, {
+                        name: '林俊杰',
+                        music: [
+                            {
+                                musicId: 1,
+                                musicName: '江南'
+                            },
+                            {
+                                musicId: 2,
+                                musicName: '可惜没如果'
+                            }
+                        ]
                     }
                 ]
             }

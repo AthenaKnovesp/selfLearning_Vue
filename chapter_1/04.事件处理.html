@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 事件处理 -->
+        <!-- v-on -->
+        <p>{{number}}</p>
+        <p><button v-on:click="number+=1">number+1</button></p>
+
+        <!-- 传参 -->
+        <p><button v-on:click="addNumber(10)">number+10</button></p>
+        <p><button v-on:click="subNumber(2)">number-2</button></p>
+
+        <!-- 事件对象 -->
+        <p><button v-on:click="event(1,$event)">event</button></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                number: 10,
+            },
+            methods: {
+                addNumber(step) {
+                    console.log(step);
+                    this.number += step;
+                },
+                subNumber(step) {
+                    console.log(step);
+                    this.number -= step;
+                },
+                event(step, obj) {
+                    console.log(step, obj);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
