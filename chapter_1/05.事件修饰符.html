@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        #outer {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+        }
+
+        #inner {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-on:click="btnOuter()" id="outer">
+            <!-- v-on简写 -->
+            <!-- <div @click="btnInner($event)" id="inner"></div> -->
+            <div @click.stop="btnInner()" id="inner"></div>
+        </div>
+
+        <!-- <p><a @click="jumpA($event)" href="https://www.baidu.com">Baidu</a></p> -->
+        <p><a @click.prevent="jumpA()" href="https://www.baidu.com">Baidu</a></p>
+
+        <input @keyup.enter="keyUp()">
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btnOuter() {
+                    console.log('outer');
+                },
+                btnInner() {
+                    console.log('inner');
+                    // 阻止冒泡
+                    // event.stopPropagation();
+                }, jumpA(event) {
+                    // 阻止默认行为
+                    // event.preventDefault();
+                },
+                keyUp() {
+                    console.log('aaa');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
