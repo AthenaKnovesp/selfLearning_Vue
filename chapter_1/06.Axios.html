@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>{{stu.age}}</div>
+        <!-- <div>{{stu.name}}</div> -->
+        <a v-bind:href="stu.url">百度</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    stu: {}
+                }
+            },
+            mounted() { //钩子函数
+                axios.get('./data.json').then(res => {
+                    let resdata = JSON.parse(JSON.stringify(res));
+                    console.log(resdata.data.stu);
+                })
+            },
+        });
+    </script>
+</body>
+
+</html>
